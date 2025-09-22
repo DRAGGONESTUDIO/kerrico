@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body data-theme="dark">
+    <!-- Theme Selector Dropdown -->
+    <div class="theme-dropdown">
+        <button class="theme-dropdown-btn">
+            <span class="theme-icon dark-icon">🌙</span>
+            <span class="theme-name">Dark Mode</span>
+            <span class="arrow">▼</span>
+        </button>
+        <div class="theme-dropdown-content">
+            <div class="theme-option" data-theme="dark">
+                <span class="theme-icon dark-icon">🌙</span>
+                <span>Dark Mode</span>
+            </div>
+            <div class="theme-option" data-theme="sakura">
+                <span class="theme-icon sakura-icon">🌸</span>
+                <span>Sakura Mode</span>
+            </div>
+            <div class="theme-option" data-theme="matcha">
+                <span class="theme-icon matcha-icon">🍵</span>
+                <span>Matcha Mode</span>
+            </div>
+            <div class="theme-option" data-theme="coffee">
+                <span class="theme-icon coffee-icon">☕</span>
+                <span>Coffee Mode</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Animal Images for Sakura Mode -->
+    <img src="images/Cat2.webp" alt="Cat" class="sakura-animal cat2-image">
+    <img src="images/fox.webp" alt="Fox" class="sakura-animal fox-image">
+    <img src="images/fox1.webp" alt="Fox Alternative" class="sakura-animal fox1-image">
+    <img src="images/dog.webp" alt="Dog" class="sakura-animal dog-image">
+    <img src="images/dog1.webp" alt="Dog Alternative" class="sakura-animal dog1-image">
+    <img src="images/crow.webp" alt="Crow" class="sakura-animal crow-image">
+    <img src="images/crow1.webp" alt="Crow Alternative" class="sakura-animal crow1-image">
+    
+    <!-- Vanta.js Clouds Background for Dark Mode -->
+    <div id="vantajs"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Kerrico</h1>
+            <p>Welcome to my creative space</p>
+        </header>
+        
+        <main>
+            <section class="desktop">
+                <div class="folder-icon" data-folder="home">
+                    <div class="icon-image">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 8L10 3L17 8M3 8V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V8M3 8H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="icon-label">Home</div>
+                </div>
+                
+                <div class="folder-icon" data-folder="about">
+                    <div class="icon-image">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M6 20C6 17.7909 7.79086 16 10 16H14C16.2091 16 18 17.7909 18 20V21H6V20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="icon-label">About</div>
+                </div>
+                
+                <div class="folder-icon" data-folder="projects">
+                    <div class="icon-image">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 3V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M8 3V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 3V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M9 12H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M9 16H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="icon-label">Projects</div>
+                </div>
+                
+                <div class="folder-icon" data-folder="social">
+                    <div class="icon-image">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 16C15.3137 16 18 13.3137 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 13.3137 8.68629 16 12 16Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 20C3.5 16 6.5 14 12 14C17.5 14 20.5 16 22 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="icon-label">Social</div>
+                </div>
+                
+                <div class="folder-icon" data-folder="contact">
+                    <div class="icon-image">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 8L10 3L17 8M3 8V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V8M3 8H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 15H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M14 15H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M9 19H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M14 19H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="icon-label">Contact</div>
+                </div>
+                
+                <!-- Secret Folder Icon -->
+                <div class="folder-icon secret-folder" data-folder="secret">
+                    <div class="icon-image">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15V17M12 17V19M12 17H10M12 17H14M19 7H17M7 7H5M17 7C17 9.20914 15.2091 11 13 11H11C8.79086 11 7 9.20914 7 7M17 7C17 4.79086 15.2091 3 13 3H11C8.79086 3 7 4.79086 7 7M7 7V19C7 20.1046 7.89543 21 9 21H15C16.1046 21 17 20.1046 17 19V7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="icon-label">Secret</div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Windows will be dynamically added here -->
+    
+    <!-- Include HOWLER.JS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="script.js"></script>
+    <script src="test-cat-functionality.js"></script>
+    <script src="test-horror-styles.js"></script>
+    <script src="verify-horror-implementation.js"></script>
+</body>
+</html>
