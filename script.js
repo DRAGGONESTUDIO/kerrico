@@ -1570,16 +1570,17 @@ function openCatSecretFolder() {
     
     // Create window
     const window = document.createElement('div');
-    window.className = 'window active';
+    window.className = 'window active horror-cat-gallery-window';
     window.setAttribute('data-window-id', 'cat-secret');
     
     // Window header
     const windowHeader = document.createElement('div');
-    windowHeader.className = 'window-header';
+    windowHeader.className = 'window-header horror-window-header';
     
     // Window title
     const title = document.createElement('div');
-    title.textContent = 'Cat Secret Folder';
+    title.textContent = '🐱 CURSED CATS GALLERY 🐱';
+    title.className = 'horror-window-title';
     
     // Window controls
     const windowControls = document.createElement('div');
@@ -1587,7 +1588,7 @@ function openCatSecretFolder() {
     
     // Close button
     const closeBtn = document.createElement('button');
-    closeBtn.className = 'window-btn close-btn';
+    closeBtn.className = 'window-btn close-btn horror-close-btn';
     closeBtn.innerHTML = '&times;'; // Times symbol
     
     // Add hover sound
@@ -1607,8 +1608,8 @@ function openCatSecretFolder() {
     
     // Window content
     const windowContent = document.createElement('div');
-    windowContent.className = 'window-content';
-    windowContent.innerHTML = '<h2>Cute Cats Gallery</h2><p>Loading amazing cat pictures...</p><div id="cat-images-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;"></div><div style="text-align: center; margin-top: 20px;"><button id="load-more-cats" style="padding: 10px 20px; background: #4e54c8; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Load More Images</button></div>';
+    windowContent.className = 'window-content horror-cat-content';
+    windowContent.innerHTML = '<div class="horror-cat-gallery-container"><h2 class="horror-cat-gallery-title">👻 HAUNTED FELINE COLLECTION 👻</h2><p class="horror-cat-loading">Summoning cursed cats from the void...</p><div id="cat-images-container" class="horror-cat-images-grid"></div><div class="horror-cat-button-container"><button id="load-more-cats" class="horror-load-more-btn">💀 SUMMON MORE CATS 💀</button></div></div>';
     
     window.appendChild(windowHeader);
     window.appendChild(windowContent);
@@ -1650,14 +1651,18 @@ function openCatSecretFolder() {
                 fetchCatImages();
             });
             
-            // Add hover effect
+            // Add horror hover effect
             loadMoreButton.addEventListener('mouseenter', function() {
                 playSound('button-hover');
-                this.style.background = '#6a71e6';
+                this.style.background = 'linear-gradient(135deg, #8b0000 0%, #ff0000 100%)';
+                this.style.boxShadow = '0 0 30px rgba(255, 0, 0, 0.8)';
+                this.style.transform = 'scale(1.05)';
             });
             
             loadMoreButton.addEventListener('mouseleave', function() {
-                this.style.background = '#4e54c8';
+                this.style.background = 'linear-gradient(135deg, #ff0000 0%, #8b0000 100%)';
+                this.style.boxShadow = '0 0 20px rgba(255, 0, 0, 0.5)';
+                this.style.transform = 'scale(1)';
             });
         }
     }, 100);
@@ -1670,7 +1675,7 @@ function fetchCatImages() {
     // Show loading message
     const loadMoreButton = document.getElementById('load-more-cats');
     if (loadMoreButton) {
-        loadMoreButton.textContent = 'Loading...';
+        loadMoreButton.textContent = '💀 CONJURING... 💀';
         loadMoreButton.disabled = true;
     }
     
@@ -1680,37 +1685,48 @@ function fetchCatImages() {
             const container = document.getElementById('cat-images-container');
             if (container) {
                 // If this is the first load, clear the loading message
-                if (container.innerHTML === '<p>Loading amazing cat pictures...</p>') {
-                    container.innerHTML = '';
+                const loadingMessage = container.parentNode.querySelector('.horror-cat-loading');
+                if (loadingMessage) {
+                    loadingMessage.remove();
                 }
                 
                 data.forEach(cat => {
+                    const imgContainer = document.createElement('div');
+                    imgContainer.className = 'horror-cat-image-container';
+                    
                     const img = document.createElement('img');
                     img.src = cat.url;
-                    img.alt = 'Cute Cat';
-                    img.style.width = '100%';
-                    img.style.height = '200px';
-                    img.style.objectFit = 'cover';
-                    img.style.borderRadius = '10px';
-                    img.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
-                    img.style.transition = 'transform 0.3s ease';
+                    img.alt = 'Cursed Cat';
+                    img.className = 'horror-cat-api-image';
                     
-                    // Add hover effect
+                    // Add horror hover effects
                     img.addEventListener('mouseenter', function() {
-                        this.style.transform = 'scale(1.05)';
+                        this.style.transform = 'scale(1.05) rotate(2deg)';
+                        this.style.filter = 'saturate(2) contrast(1.5) hue-rotate(10deg)';
+                        this.style.boxShadow = '0 0 30px rgba(255, 0, 0, 0.8)';
+                        playSound('button-hover');
                     });
                     
                     img.addEventListener('mouseleave', function() {
                         this.style.transform = 'scale(1)';
+                        this.style.filter = 'saturate(1.2) contrast(1.1)';
+                        this.style.boxShadow = '0 0 15px rgba(255, 0, 0, 0.5)';
                     });
                     
-                    container.appendChild(img);
+                    // Add horror overlay effects
+                    const overlay = document.createElement('div');
+                    overlay.className = 'horror-cat-overlay';
+                    overlay.innerHTML = '👻';
+                    
+                    imgContainer.appendChild(img);
+                    imgContainer.appendChild(overlay);
+                    container.appendChild(imgContainer);
                 });
             }
             
             // Reset button
             if (loadMoreButton) {
-                loadMoreButton.textContent = 'Load More Images';
+                loadMoreButton.textContent = '💀 SUMMON MORE CATS 💀';
                 loadMoreButton.disabled = false;
             }
         })
@@ -1718,12 +1734,15 @@ function fetchCatImages() {
             console.error('Error fetching cat images:', error);
             const container = document.getElementById('cat-images-container');
             if (container) {
-                container.innerHTML = '<p>Failed to load cat images. Please try again later.</p>';
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'horror-error-message';
+                errorMsg.innerHTML = '💀 THE CATS HAVE ESCAPED FROM THE VOID! 💀<br>Try summoning them again...';
+                container.appendChild(errorMsg);
             }
             
             // Reset button
             if (loadMoreButton) {
-                loadMoreButton.textContent = 'Load More Images';
+                loadMoreButton.textContent = '💀 SUMMON MORE CATS 💀';
                 loadMoreButton.disabled = false;
             }
         });
